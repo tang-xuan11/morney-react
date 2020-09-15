@@ -16,15 +16,17 @@ const NavWrapper = styled.nav`
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        color: #999999;
         padding: 4px 0;
         > .icon {
           width: 24px;
           height: 24px;
+          fill: #999999;
         }
         &.selected {
-          color: #ffb21a;
+          color: #333333;
           > .icon {
-            fill: #ffb21a;
+            fill: #333333;
           }
         }
       }
