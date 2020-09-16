@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "components/Layout";
 import styled from "styled-components";
-import {TagsSection} from 'views/Money/TagsSection'
+import { TagsSection } from "views/Money/TagsSection";
 import { NotesSection } from "./Money/NotesSection";
 import { CategorySection } from "./Money/CategorySection";
 import { NumberPadSection } from "./Money/NumberPadSection";
@@ -13,15 +13,7 @@ const MyLayout = styled(Layout)`
 const Money = () => {
   return (
     <MyLayout>
-      <TagsSection>
-        <ol>
-          <li>衣</li>
-          <li>食</li>
-          <li>住</li>
-          <li>行</li>
-        </ol>
-        <button>新增标签</button>
-      </TagsSection>
+      <TagsSection />
       <NotesSection>
         <label>
           <span>备注</span>
