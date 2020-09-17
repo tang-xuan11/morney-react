@@ -23,8 +23,14 @@ const Wrapper = styled.section`
     }
   }
 `;
-const CategorySection: React.FC = () => {
-  const [category, setCategory] = useState("-");
+
+type Props = {
+  value: "-" | "+";
+  onChange: (value: "-" | "+") => void;
+};
+
+const CategorySection: React.FC<Props> = (props) => {
+  const category = props.value;
   const [categoryList] = useState<("-" | "+")[]>(["-", "+"]);
   const categoryMap = { "-": "支出", "+": "收入" };
   return (
@@ -34,7 +40,7 @@ const CategorySection: React.FC = () => {
           <li
             className={category === c ? "selected" : ""}
             onClick={() => {
-              setCategory(c);
+              props.onChange(c);
             }}
             key={c}
           >
