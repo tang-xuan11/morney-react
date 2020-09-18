@@ -8,13 +8,13 @@ try {
 }
 
 type Props = {
-  name: string;
+  name?: string;
 };
 
-const Icon = (Props: Props) => {
+const Icon = (props: Props) => {
   return (
     <svg className="icon">
-      <use xlinkHref={"#" + Props.name} />
+      {props.name && <use xlinkHref={"#" + props.name} />}
     </svg>
   );
 };
