@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import { useTags } from "useTags";
+import { createId } from "lib/createId";
 const Wrapper = styled.section`
   background: #ffffff;
   padding: 12px 16px;
@@ -47,7 +48,7 @@ const TagsSection: React.FC<Props> = (props) => {
       if (tagName === "") {
         window.alert("标签名不能为空");
       } else {
-        setTags([...tags, { id: Math.random(), name: tagName }]);
+        setTags([...tags, { id: createId(), name: tagName }]);
       }
     }
   };
