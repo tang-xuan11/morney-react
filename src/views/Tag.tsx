@@ -27,7 +27,7 @@ const InputWrapper = styled.div`
   margin-top: 8px;
 `;
 const Tag: React.FC = (props) => {
-  const { findTag } = useTags();
+  const { findTag, updateTag } = useTags();
   const { id } = useParams<Params>();
   const tag = findTag(parseInt(id));
   return (
@@ -43,6 +43,7 @@ const Tag: React.FC = (props) => {
           type="text"
           placeholder="请输入标签名"
           value={tag.name}
+          onChange={(e) => updateTag(tag.id, { name: e.target.value })}
         />
       </InputWrapper>
       <Center>
