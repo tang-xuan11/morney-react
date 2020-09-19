@@ -46,11 +46,17 @@ const Tag: React.FC = (props) => {
         <Space />
         <Space />
         <Space />
-        <Button onClick={() => deleteTag(tag.id)}>删除标签</Button>
+        <Button onClick={() => deleteTag(tag.id)}>
+          <div onClick={onClickRemove}>删除标签</div>
+        </Button>
       </Center>
     </div>
   );
   const history = useHistory();
+  const onClickRemove = () => {
+    window.alert("删除成功");
+    history.goBack();
+  };
   const onClickBack = () => {
     history.goBack();
   };
