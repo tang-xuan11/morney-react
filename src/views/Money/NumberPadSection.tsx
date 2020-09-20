@@ -3,8 +3,8 @@ import { generateOutput } from "./NumberPadSection/generateOutput";
 import { Wrapper } from "./NumberPadSection/Wrapper";
 
 type Props = {
-  value: number;
-  onChange: (value: number) => void;
+  value: string;
+  onChange: (value: string) => void;
   onOk?: () => void;
 };
 
@@ -13,11 +13,11 @@ const NumberPadSection: React.FC<Props> = (props) => {
   const setOutput = (output: string) => {
     let value;
     if (output.length > 16) {
-      value = parseFloat(output.slice(0, 16));
+      value = output.slice(0, 16);
     } else if (output.length === 0) {
-      value = 0;
+      value = "0";
     } else {
-      value = parseFloat(output);
+      value = output;
     }
     props.onChange(value);
   };

@@ -5,7 +5,7 @@ type RecordItem = {
   tagIds: number[];
   note: string;
   category: "-" | "+";
-  amount: number;
+  amount: string;
   createAt: string;
 };
 type NewRecordItem = Omit<RecordItem, "createAt">;
@@ -19,7 +19,7 @@ const useRecords = () => {
     window.localStorage.setItem("records", JSON.stringify(records));
   }, [records]);
   const addRecord = (newRecord: NewRecordItem) => {
-    if (newRecord.amount === 0) {
+    if (newRecord.amount === "0") {
       alert("请输入金额");
       return false;
     }
