@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useUpdate } from "./useUpdate";
 
-type RecordItem = {
+export type RecordItem = {
   tagIds: number[];
   note: string;
   category: "-" | "+";
@@ -25,6 +25,9 @@ const useRecords = () => {
     }
     if (newRecord.tagIds.length === 0) {
       alert("请选择标签");
+      return false;
+    } else if (newRecord.tagIds.length !== 1) {
+      alert("只能选择一个标签");
       return false;
     }
     let record = { ...newRecord, createAt: new Date().toISOString() };
