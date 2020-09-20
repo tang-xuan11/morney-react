@@ -45,7 +45,20 @@ const useTags = () => {
       }
     }
   };
-  return { tags, setTags, findTag, findTagIndex, updateTag, deleteTag, addTag };
+  const getName = (id: number) => {
+    const tag = tags.filter((t) => t.id === id)[0];
+    return tag ? tag.name : "";
+  };
+  return {
+    tags,
+    getName,
+    setTags,
+    findTag,
+    findTagIndex,
+    updateTag,
+    deleteTag,
+    addTag,
+  };
 };
 
 export { useTags };
