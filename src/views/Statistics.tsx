@@ -33,7 +33,7 @@ const Statistics = () => {
   const { getName } = useTags();
   const hash: { [k: string]: RecordItem[] } = {};
   const selectedRecords = records.filter((r) => r.category === category);
-  selectedRecords.map((r) => {
+  selectedRecords.forEach((r) => {
     const key = dayjs(r.createAt).format("YYYY年M月D日");
     if (!(key in hash)) {
       hash[key] = [];
@@ -55,28 +55,26 @@ const Statistics = () => {
           onChange={(value) => setCategory(value)}
         />
       </CategoryWrapper>
-      {array.map(([date, records]) => {
-        return (
+      {array.map(([date, records]) => (
+        <div key={date}>
+          <Header>{date}</Header>
           <div>
-            <Header>{date}</Header>
-            <div>
-              {records.map((r) => {
-                return (
-                  <Item>
-                    <div className="tags oneLine">
-                      {r.tagIds.map((tagId) => (
-                        <span key={tagId}>{getName(tagId)}</span>
-                      ))}
-                    </div>
-                    <div className="note">{r.note}</div>
-                    <div className="amount">￥{r.amount}</div>
-                  </Item>
-                );
-              })}
-            </div>
+            {records.map((r) => {
+              return (
+                <Item key={r.createAt}>
+                  <div className="tags oneLine">
+                    {r.tagIds.map((tagId) => (
+                      <span key={tagId}>{getName(tagId)}</span>
+                    ))}
+                  </div>
+                  {r.note && <div className="note">{r.note}</div>}
+                  <div className="amount">￥{r.amount}</div>
+                </Item>
+              );
+            })}
           </div>
-        );
-      })}
+        </div>
+      ))}
     </Layout>
   );
 };
